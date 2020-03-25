@@ -1,44 +1,33 @@
-import java.util.*;
+import java.util.Arrays;
 
-public class selectionsort{
+class selectionsort {
 
     public static void main(String[] args){
 
-        int size;
-        Scanner scn = new Scanner(System.in);
-        System.out.print("entee how many no you want to enter : ");
-        size = scn.nextInt();
+        int[] arr = {6,5,4,3,2,1};
+        System.out.println("Provided Array : " + Arrays.toString(arr));
+        sort(arr);
 
-        int arr[] = new int[size];
-
-        System.out.println("Enter the elements of the array : ");
-        for(int i = 0 ; i < size ; i++ ){
-
-            System.out.print("Enter "+ (i+1) +" element : " );
-            arr[i] = scn.nextInt();
-
-        }
-
-        int temp;
-
-        for(int i = 1 ; i < size ; i++ ){
-
-            int j = i - 1;
-            int key = arr[i];
-            while(j >= 0 && arr[j] > key){
-                temp = arr[j+1];
-                arr[j+1] = arr[j];
-                arr[j] = temp;
-                j = j - 1;
-            }     
-        }
-
-        for(int i = 0 ; i < size ; i++){
-
-            System.out.print(arr[i]+" ");
-
-        }
-        System.out.println();   
+        System.out.println("Sorted Array : " + Arrays.toString(arr));
     }
+
+    public static void sort(int[] arr){
+
+        int n = arr.length;
+
+        for(int i = 0 ; i < n-1 ; i++){
+            int min_idx = i ;
+            for(int j = i + 1 ; j < n  ; j++){
+                if(arr[min_idx] > arr[j]){
+                    min_idx = j;
+                }
+            } 
+            int temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+
+        }
+
+    } 
 
 }
